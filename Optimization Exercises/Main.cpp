@@ -16,8 +16,6 @@ struct cell
 
 int table[10][10];
 
-void feedStack(int x, int y);
-
 int main()
 {
 	srand(time(0));
@@ -45,27 +43,22 @@ int main()
 	cin >> line;
 	cout << "Row: ";
 	cin >> row;
-	//while (!cellsToCheck.empty())
-	//{
-	//	cellsToCheck.pop(); //pop first and then feed if needed in the checks
-	//}
+
 	stack <cell> cellsToCheck;
 	cout << "The Key number is: " << table[line][row] << " and it will be replaced by 1\n";
 	keyNumber = table[line][row];
-	//feedStack(line, row);
 	cell cellToTheStack = cell(line, row);
 	cellsToCheck.push(cellToTheStack);
 
 
 	while (!cellsToCheck.empty()) //So we'll loop as long as something is in the stack
-	//while (test < 10)
 	{
 		cell currentCell = cell(0,0);
 		if (!cellsToCheck.empty())
 		{
 			currentCell = cellsToCheck.top();
 		}
-		//int cellValue = table[currentCell.x][currentCell.y];
+
 		int checkedValue = -100;
 		int cX = currentCell.x;
 		int cY = currentCell.y;
@@ -102,7 +95,6 @@ int main()
 			//check right
 			checkedValue = table[cX][cY + 1];
 			if (keyNumber == checkedValue) {
-				//feedStack(cX, cY + 1);
 				cell cellToTheStack = cell(cX, cY + 1);
 				cellsToCheck.push(cellToTheStack);
 			}
@@ -112,7 +104,6 @@ int main()
 			//check left
 			checkedValue = table[cX][cY - 1];
 			if (keyNumber == checkedValue) {
-				//feedStack(cX, cY - 1);
 				cell cellToTheStack = cell(cX, cY - 1);
 				cellsToCheck.push(cellToTheStack);
 			}
@@ -122,25 +113,12 @@ int main()
 
 	for (int i = 1; i < 11; i++)
 	{
-	for (int j = 1; j < 11; j++)
-		{	
-			if (table[i][j] == keyNumber)
-			{
-			//	table[i][j] = replaceValue;
+		for (int j = 1; j < 11; j++)
+			{	
+				cout << table[i][j] << " ";
 			}
-			cout << table[i][j] << " ";
+			cout << "\n";
 		}
-		cout << "\n";
-	}
-	while (!cellsToCheck.empty())
-	{
-		cout << "El X: " << cellsToCheck.top().x << " ";
-		cout << "El Y: " << cellsToCheck.top().y << "\n";
-		cellsToCheck.pop();
-	}
-
-
-	cout << "Hey\n";
 	std::system("pause");
 	return 0;
 }
