@@ -1,5 +1,6 @@
 #include <iostream>
 #include <stack>
+#include <ctime>
 
 using namespace std;
 struct cell
@@ -19,12 +20,12 @@ void feedStack(int x, int y);
 
 int main()
 {
+	srand(time(0));
 	int randomValue;
 	int line, row = 0;
 	int keyNumber;
 	int replaceValue = 1;
 	int test = 0;
-	//bool replace = true;
 
 	for (int i = 1; i < 11; i++) 
 	{
@@ -65,7 +66,7 @@ int main()
 			currentCell = cellsToCheck.top();
 		}
 		int cellValue = table[currentCell.x][currentCell.y];
-		int checkedValue;
+		int checkedValue = -100;
 		int cX = currentCell.x;
 		int cY = currentCell.y;
 		
@@ -142,13 +143,4 @@ int main()
 	cout << "Hey\n";
 	std::system("pause");
 	return 0;
-}
-void feedStack(int x, int y)
-{
-
-	//cell cellToTheStack = cell(x, y);
-//	cellsToCheck.push(cellToTheStack);
-	//table[x][y] = 1;
-	//cout << "\n\n CELULA EH " << cellToTheStack.x << " " << cellToTheStack.y << "\n\n";
-	//cellsToCheck.push(cellToTheStack);
 }
