@@ -65,7 +65,7 @@ int main()
 		{
 			currentCell = cellsToCheck.top();
 		}
-		int cellValue = table[currentCell.x][currentCell.y];
+		//int cellValue = table[currentCell.x][currentCell.y];
 		int checkedValue = -100;
 		int cX = currentCell.x;
 		int cY = currentCell.y;
@@ -79,7 +79,7 @@ int main()
 		{
 			//check botton
 			checkedValue = table[cX + 1][cY];
-			if (cellValue == checkedValue) {
+			if (keyNumber == checkedValue) {
 				//feedStack(cX + 1, cY);
 				cell cellToTheStack = cell(cX + 1, cY);
 				cellsToCheck.push(cellToTheStack);
@@ -89,7 +89,7 @@ int main()
 		{
 			//check top
 			checkedValue = table[cX - 1][cY];
-			if (cellValue == checkedValue) {
+			if (keyNumber == checkedValue) {
 				//feedStack(cX - 1, cY);
 
 				cell cellToTheStack = cell(cX - 1, cY);
@@ -101,7 +101,7 @@ int main()
 		{
 			//check right
 			checkedValue = table[cX][cY + 1];
-			if (cellValue == checkedValue) {
+			if (keyNumber == checkedValue) {
 				//feedStack(cX, cY + 1);
 				cell cellToTheStack = cell(cX, cY + 1);
 				cellsToCheck.push(cellToTheStack);
@@ -111,7 +111,7 @@ int main()
 		{
 			//check left
 			checkedValue = table[cX][cY - 1];
-			if (cellValue == checkedValue) {
+			if (keyNumber == checkedValue) {
 				//feedStack(cX, cY - 1);
 				cell cellToTheStack = cell(cX, cY - 1);
 				cellsToCheck.push(cellToTheStack);
