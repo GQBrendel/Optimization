@@ -1,0 +1,4 @@
+﻿  CellReplace.cpp
+c:\users\guilhermeqb\documents\optimization-master\optimization exercises\cellreplace.cpp(17): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Optimization Exercises.vcxproj -> C:\Users\guilhermeqb\Documents\Optimization-master\x64\Debug\Optimization Exercises.exe
+  Optimization Exercises.vcxproj -> C:\Users\guilhermeqb\Documents\Optimization-master\x64\Debug\Optimization Exercises.pdb (Partial PDB)
