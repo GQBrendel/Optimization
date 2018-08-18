@@ -14,8 +14,6 @@ cell* ClosestPoint::addPoints()
 		cell(5, 11.5), cell(6.5, 3.2), cell(7, -10),
 		cell(9, -5), cell(11.5, -4)
 	};
-
-
 	/*for (int i = 0; i < 16; i++) {
 		std::cout << "(" << cells[i].x << "," << cells[i].y << "), " ;
 	}*/
@@ -60,8 +58,10 @@ void ClosestPoint::runClosestPoint()
 		std::cout << "\n";
 	}
 
-	util.mergeSort(cells,16);
-	//vector<int> vetor = util.convertCellIntoXArray(cells, 16);
+	vector<cell> cellsVector = util.convertCellpointerIntoVector(cells, 15);
+
+	util.mergeSort(cellsVector);
+
 
 
 	//cout << converted[0];
