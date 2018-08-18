@@ -1,6 +1,6 @@
 #include "ClosestPoint.h"
 
-
+using namespace std;
 
 cell* ClosestPoint::addPoints()
 {
@@ -16,9 +16,9 @@ cell* ClosestPoint::addPoints()
 	};
 
 
-	for (int i = 0; i < 16; i++) {
+	/*for (int i = 0; i < 16; i++) {
 		std::cout << "(" << cells[i].x << "," << cells[i].y << "), " ;
-	}
+	}*/
 	return cells;
 }
 bool ClosestPoint::checkOnTable( int x, int y)
@@ -36,7 +36,7 @@ bool ClosestPoint::checkOnTable( int x, int y)
 }
 void ClosestPoint::runClosestPoint()
 {
-	char table[50][50];
+	char table[40][40];
 
 
 	//First of all get a list of points and add to the stack
@@ -52,11 +52,22 @@ void ClosestPoint::runClosestPoint()
 			}
 			else
 			{
-				table[i][j] = 'X';
+				table[i][j] = '_';
 
 			}
 			std::cout << table[i][j] << ' ';
 		}
 		std::cout << "\n";
 	}
+
+	vector<int> vetor = util.convertCellIntoXArray(cells, 16);
+
+	for (int i = 0; i < vetor.size(); i++) {
+		cout << vetor[i];
+	}
+
+	//converted = new int[16];
+
+	//cout << converted[0];
+	cout << "Hellomoustartd";
 }
