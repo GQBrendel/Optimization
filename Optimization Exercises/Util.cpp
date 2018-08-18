@@ -14,31 +14,42 @@ Util::~Util()
 
 
 
-cell * Util::mergeSort(int * cellToSort, int size)
+cell * Util::mergeSort(cell * cellToSort, int size)
 {
-	float middle = (1 + size) / 2;
+	int middle = (1 + size) / 2;
+	std::cout << "\n Middle is " << middle;
 
-	int * rightArray;
-	rightArray = new int[size];
+	std::vector<cell> left;
+	std::vector<cell> right;
 
+	/*
+	cell * leftArray;
+	cell * rightArray;
+	leftArray = new cell[size];
+	rightArray = new cell[size];
+	*/
 	for (int i = 0; i < middle; i++)
 	{
-		//rightArray[i] = cellToSort[i].x;
+		left.push_back(cellToSort[i]);
+		std::cout << "\n I is " << i;
+		std::cout << "\n Hello I'm left array and my number is " << left[i].x;
 	}
-
-	int * leftArray;
-	leftArray = new int[size];
-
-	for (int i = middle; i < size; i++)
+	for (int i = 0; i < middle; i++)
 	{
-		//leftArray[i] = cellToSort[i].x;
+		right.push_back(cellToSort[i+middle]);
+		std::cout << "\n I is " << i+middle;
+		std::cout << "\n Hello I'm left array and my number is " << right[i].x;
 	}
+	std::cout << std::endl;
 
-	mergeSort(rightArray, middle);
-	mergeSort(cellToSort, middle+1);
+	//mergeSort(rightArray, middle);
+	//mergeSort(cellToSort, middle+1);
 
 	return nullptr;
 }
+
+
+
 
 std::vector<int> Util::convertCellIntoXArray(cell * cell, int size)
 {

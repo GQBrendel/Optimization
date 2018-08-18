@@ -11,6 +11,6 @@ public:
 	~Util();
 
 	std::vector<int> convertCellIntoXArray(cell *cell, int size);
-	cell *mergeSort(int *cellToSort, int size);
+	cell *mergeSort(cell *cellToSort, int size);
 };
 

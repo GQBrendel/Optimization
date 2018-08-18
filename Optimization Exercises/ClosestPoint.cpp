@@ -60,13 +60,9 @@ void ClosestPoint::runClosestPoint()
 		std::cout << "\n";
 	}
 
-	vector<int> vetor = util.convertCellIntoXArray(cells, 16);
+	util.mergeSort(cells,16);
+	//vector<int> vetor = util.convertCellIntoXArray(cells, 16);
 
-	for (int i = 0; i < vetor.size(); i++) {
-		cout << vetor[i];
-	}
-
-	//converted = new int[16];
 
 	//cout << converted[0];
 	cout << "Hellomoustartd";
