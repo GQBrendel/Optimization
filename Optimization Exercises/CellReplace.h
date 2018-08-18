@@ -11,7 +11,7 @@ public:
 	
 
 	std::stack <cell> cellsToCheck;
-	int table[10][10];
+	float table[10][10];
 	int randomValue;
 	int line, row = 0;
 	int keyNumber;
