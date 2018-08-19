@@ -10,7 +10,7 @@ cell* ClosestPoint::addPoints()
 	  { cell(-13, 0.5), cell(-10.5, -11.5),
 		cell(-10, 9), cell(-4.5, -2), cell(-1, 8.5),
 		cell(0.5, 6), cell(0.5, -12), cell(2, 12.5),
-		cell(3.5, 11), cell(5.5, 3), cell(5.5, -7),
+		cell(-12, 11), cell(-8, 3), cell(-5, -7),
 		cell(5, 11.5), cell(6.5, 3.2), cell(7, -10),
 		cell(9, -5), cell(11.5, -4)
 	};
@@ -58,7 +58,7 @@ void ClosestPoint::runClosestPoint()
 		std::cout << "\n";
 	}
 
-	vector<cell> cellsVector = util.convertCellpointerIntoVector(cells, 15);
+	vector<cell> cellsVector = util.convertCellpointerIntoVector(cells, 16);
 
 	util.mergeSort(cellsVector);
 
