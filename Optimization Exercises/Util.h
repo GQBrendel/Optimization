@@ -14,16 +14,21 @@ public:
 	Util();
 	~Util();
 
-	vector<cell> convertCellpointerIntoVector(cell * _cell, int size);
-	list<cell> convertCellpointerIntoList(cell * _cell, int size);
-	std::vector<int> convertCellIntoXArray(cell *cell, int size);
-	vector<cell> mergeSort(vector<cell> _cell, int arrayLenght);
-	vector<cell> sort(vector<cell> array1, vector<cell> array2, int half1, int half2);
+	vector<Cell> convertCellpointerIntoVector(Cell * _cell, int size);
+	list<Cell> convertCellpointerIntoList(Cell * _cell, int size);
+	vector<Cell> sortCellArrayBasedOn_X(Cell * _cell, int size);
+	vector<Cell> sortCellArrayBasedOn_Y(Cell * _cell, int size);
+	std::vector<int> convertCellIntoXArray(Cell *cell, int size);
+	vector<Cell> mergeSort(vector<Cell> _cell, int arrayLenght);
+	vector<Cell> sort(vector<Cell> array1, vector<Cell> array2, int half1, int half2);
+
+	float findDistanceBeetweenTwoPoints(Cell p1, Cell p2);
+	
 
 private:
 
 
-	void mergeSort(vector<cell> _cell, int from, int to, int half1, int half2);
+	void mergeSort(vector<Cell> _cell, int from, int to, int half1, int half2);
 
 };
 

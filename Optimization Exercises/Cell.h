@@ -1,16 +1,16 @@
 #pragma once
 #include <vector>
 
-struct cell
+struct Cell
 {
 	int x;
 	int y;
-	cell(int _x, int _y)
+	Cell(int _x, int _y)
 	{		
 		x = _x;
 		y = _y;
 	}
-	cell()
+	Cell()
 	{
 		x = 0; y = 0;
 	}

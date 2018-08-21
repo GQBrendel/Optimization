@@ -37,13 +37,13 @@ void CellReplace::runCellReplace()
 
 	std::cout << "The Key number is: " << table[line][row] << " and it will be replaced by 1\n";
 	keyNumber = table[line][row];
-	cell cellToTheStack = cell(line, row);
+	Cell cellToTheStack = Cell(line, row);
 	cellsToCheck.push(cellToTheStack);
 
 
 	while (!cellsToCheck.empty()) //So we'll loop as long as something is in the stack
 	{
-		cell currentCell = cell(0, 0);
+		Cell currentCell = Cell(0, 0);
 		currentCell = cellsToCheck.top();
 
 		int checkedValue = -100;
@@ -61,7 +61,7 @@ void CellReplace::runCellReplace()
 			checkedValue = table[cX + 1][cY];
 			if (keyNumber == checkedValue) {
 				//feedStack(cX + 1, cY);
-				cell cellToTheStack = cell(cX + 1, cY);
+				Cell cellToTheStack = Cell(cX + 1, cY);
 				cellsToCheck.push(cellToTheStack);
 			}
 		}
@@ -72,7 +72,7 @@ void CellReplace::runCellReplace()
 			if (keyNumber == checkedValue) {
 				//feedStack(cX - 1, cY);
 
-				cell cellToTheStack = cell(cX - 1, cY);
+				Cell cellToTheStack = Cell(cX - 1, cY);
 				cellsToCheck.push(cellToTheStack);
 
 			}
@@ -82,7 +82,7 @@ void CellReplace::runCellReplace()
 			//check right
 			checkedValue = table[cX][cY + 1];
 			if (keyNumber == checkedValue) {
-				cell cellToTheStack = cell(cX, cY + 1);
+				Cell cellToTheStack = Cell(cX, cY + 1);
 				cellsToCheck.push(cellToTheStack);
 			}
 		}
@@ -91,7 +91,7 @@ void CellReplace::runCellReplace()
 			//check left
 			checkedValue = table[cX][cY - 1];
 			if (keyNumber == checkedValue) {
-				cell cellToTheStack = cell(cX, cY - 1);
+				Cell cellToTheStack = Cell(cX, cY - 1);
 				cellsToCheck.push(cellToTheStack);
 			}
 		}

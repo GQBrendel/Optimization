@@ -11,9 +11,9 @@ Util::~Util()
 {
 }
 
-vector<cell> Util::convertCellpointerIntoVector(cell * _cell, int size)
+vector<Cell> Util::convertCellpointerIntoVector(Cell * _cell, int size)
 {
-	std::vector<cell> result;
+	std::vector<Cell> result;
 
 	for (int i = 0; i < size; i++)
 	{
@@ -22,17 +22,49 @@ vector<cell> Util::convertCellpointerIntoVector(cell * _cell, int size)
 	return result;
 }
 
-list<cell> Util::convertCellpointerIntoList(cell * _cell, int size)
+list<Cell> Util::convertCellpointerIntoList(Cell * _cell, int size)
 {
-	std::list<cell> result;
+	std::list<Cell> result;
 	for (int i = 0; i < size; i++)
 	{
 		result.push_back(_cell[i]);
 	}
 	return result;
 }
+vector<Cell> Util::sortCellArrayBasedOn_X(Cell * _cell, int size)
+{
+	vector<Cell> result;
+	std::list<Cell> listToSort;
+	for (int i = 0; i < size; i++)
+	{
+		listToSort.push_back(_cell[i]);
+	}
+	listToSort.sort([](const Cell &f, const Cell &s) { return f.x < s.x; });
+	for (int i = 0; i < size; i++)
+	{
+		result.push_back(listToSort.front());
+		listToSort.pop_front();
+	}
+	return result;
+}
+vector<Cell> Util::sortCellArrayBasedOn_Y(Cell * _cell, int size)
+{
+	vector<Cell> result;
+	std::list<Cell> listToSort;
+	for (int i = 0; i < size; i++)
+	{
+		listToSort.push_back(_cell[i]);
+	}
+	listToSort.sort([](const Cell &f, const Cell &s) { return f.y < s.y; });
+	for (int i = 0; i < size; i++)
+	{
+		result.push_back(listToSort.front());
+		listToSort.pop_front();
+	}
+	return result;
+}
 
-std::vector<int> Util::convertCellIntoXArray(cell * cell, int size)
+std::vector<int> Util::convertCellIntoXArray(Cell * cell, int size)
 {
 	std::vector<int> resultVector;
 
@@ -44,9 +76,9 @@ std::vector<int> Util::convertCellIntoXArray(cell * cell, int size)
 	return resultVector;
 }
 
-vector<cell> Util::mergeSort(vector<cell> _cell, int size)
+vector<Cell> Util::mergeSort(vector<Cell> _cell, int size)
 {
-	vector<cell> currentCell = _cell;
+	vector<Cell> currentCell = _cell;
 	int half1, half2;
 
 	cout << "\n Olha o size " << size;
@@ -61,8 +93,8 @@ vector<cell> Util::mergeSort(vector<cell> _cell, int size)
 	std::cout << "\n Hafl 1 is " << half1;
 	std::cout << "\n Hafl 2 is " << half2;
 
-	std::vector<cell> left;
-	std::vector<cell> right;
+	std::vector<Cell> left;
+	std::vector<Cell> right;
 
 	for (int i = 0; i < half1; i++)
 	{
@@ -83,13 +115,13 @@ vector<cell> Util::mergeSort(vector<cell> _cell, int size)
 	return right;
 }
 
-void Util::mergeSort(vector<cell> _cell, int from, int to, int half1, int half2) 
+void Util::mergeSort(vector<Cell> _cell, int from, int to, int half1, int half2)
 {
 	if (to - from < 2)
 		return;
 
-	std::vector<cell> left;
-	std::vector<cell> right;
+	std::vector<Cell> left;
+	std::vector<Cell> right;
 
 	for (int i = from; i < (to + from) / 2; i++) {
 		left.push_back(_cell[i]);
@@ -105,9 +137,9 @@ void Util::mergeSort(vector<cell> _cell, int from, int to, int half1, int half2)
 	sort(left, right, half1, half2);
 }
 
-vector<cell> Util::sort(vector<cell> array1, vector<cell> array2, int half1, int half2)
+vector<Cell> Util::sort(vector<Cell> array1, vector<Cell> array2, int half1, int half2)
 {
-	vector<cell> orderedArray;
+	vector<Cell> orderedArray;
 	int size = array1.size() + array2.size();
 
 	cout << "\nSIZE IS " << size << endl << endl;
@@ -141,4 +173,10 @@ vector<cell> Util::sort(vector<cell> array1, vector<cell> array2, int half1, int
 		}
 	}
 	return orderedArray;
+}
+
+float Util::findDistanceBeetweenTwoPoints(Cell p1, Cell p2)
+{
+	return sqrt((p1.x - p2.x)*(p1.x - p2.x) +
+		(p1.y - p2.y)*(p1.y - p2.y));
 }

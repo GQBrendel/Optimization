@@ -7,11 +7,21 @@ class ClosestPoint
 {
 public:
 
-	cell* addPoints();
+	float bruteForce(Cell P[], int n);
+
+	float stripClosest(Cell strip[], int size, float d);
+
+	int compareX(const void * a, const void * b);
+
+	int compareY(const void * a, const void * b);
+
+	Cell* addPoints();
 	bool checkOnTable(int x, int y);
 	void runClosestPoint();
 
-	cell *cells;
+	void testaStrip(Cell strip[]);
+
+	Cell *cells;
 	Util util;
 };
 

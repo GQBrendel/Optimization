@@ -10,7 +10,7 @@ class CellReplace
 public:
 	
 
-	std::stack <cell> cellsToCheck;
+	std::stack <Cell> cellsToCheck;
 	float table[10][10];
 	int randomValue;
 	int line, row = 0;
