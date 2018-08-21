@@ -19,7 +19,16 @@ vector<cell> Util::convertCellpointerIntoVector(cell * _cell, int size)
 	{
 		result.push_back(_cell[i]);
 	}
+	return result;
+}
 
+list<cell> Util::convertCellpointerIntoList(cell * _cell, int size)
+{
+	std::list<cell> result;
+	for (int i = 0; i < size; i++)
+	{
+		result.push_back(_cell[i]);
+	}
 	return result;
 }
 
@@ -35,10 +44,9 @@ std::vector<int> Util::convertCellIntoXArray(cell * cell, int size)
 	return resultVector;
 }
 
-vector<cell> Util::mergeSort(vector<cell> _cell)
+vector<cell> Util::mergeSort(vector<cell> _cell, int size)
 {
 	vector<cell> currentCell = _cell;
-	int size = _cell.size();
 	int half1, half2;
 
 	cout << "\n Olha o size " << size;
@@ -69,23 +77,38 @@ vector<cell> Util::mergeSort(vector<cell> _cell)
 		std::cout << "\n Hello I'm right array and my number is " << right[i].x;
 	}
 	std::cout << std::endl;
+	//mergeSort(left, 0, half1, half1, half2);
+	//mergeSort(right, half2, size, half1, half2);
 
-	currentCell = sort(left, right, half1, half2, size);
-
-	cout << "\nOrdered Output:\n";
-	for (int i = 0; i < currentCell.size(); i++) {
-		cout << "(" << currentCell[i].x << "," << currentCell[i].y << ") ";
-	}
-
-	return vector<cell>();
-
-	//mergeSort(left);
-	//mergeSort(right);
+	return right;
 }
 
-vector<cell> Util::sort(vector<cell> array1, vector<cell> array2, int half1, int half2, int size)
+void Util::mergeSort(vector<cell> _cell, int from, int to, int half1, int half2) 
+{
+	if (to - from < 2)
+		return;
+
+	std::vector<cell> left;
+	std::vector<cell> right;
+
+	for (int i = from; i < (to + from) / 2; i++) {
+		left.push_back(_cell[i]);
+	}
+	for (int i = (to + from) / 2; i < to; i++) {
+		right.push_back(_cell[i]);
+	}
+
+	mergeSort(left, from, (to + from) / 2, half1, half2);
+	mergeSort(right, (to + from) / 2, to, half1, half2);
+
+
+	sort(left, right, half1, half2);
+}
+
+vector<cell> Util::sort(vector<cell> array1, vector<cell> array2, int half1, int half2)
 {
 	vector<cell> orderedArray;
+	int size = array1.size() + array2.size();
 
 	cout << "\nSIZE IS " << size << endl << endl;
 
@@ -119,6 +142,3 @@ vector<cell> Util::sort(vector<cell> array1, vector<cell> array2, int half1, int
 	}
 	return orderedArray;
 }
-
-
-

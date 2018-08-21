@@ -7,7 +7,7 @@ cell* ClosestPoint::addPoints()
 
 	cells = new cell[16]
 	//I abstracted the floating points
-	  { cell(-13, 0.5), cell(-10.5, -11.5),
+	  { cell(13, 0.5), cell(-10.5, -11.5),
 		cell(-10, 9), cell(-4.5, -2), cell(-1, 8.5),
 		cell(0.5, 6), cell(0.5, -12), cell(2, 12.5),
 		cell(-12, 11), cell(-8, 3), cell(-5, -7),
@@ -60,10 +60,14 @@ void ClosestPoint::runClosestPoint()
 
 	vector<cell> cellsVector = util.convertCellpointerIntoVector(cells, 16);
 
-	util.mergeSort(cellsVector);
+	list<cell> cellsList = util.convertCellpointerIntoList(cells, 16);
 
+	cout << "\nCells before: " << cellsList.front().x;
 
+	//std::list<cell> registry;
+	cellsList.sort([](const cell &f, const cell &s) { return f.x < s.x; });
 
-	//cout << converted[0];
-	cout << "Hellomoustartd";
+	cout << "\nCells after: " << cellsList.front().x;
+
+	//util.mergeSort(cellsVector, cellsVector.size());
 }
