@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include <list>
+#include <array>
 #include "Cell.h"
 #include <algorithm>
 
@@ -21,7 +22,7 @@ public:
 
 	vector<Cell> sortCellArrayBasedOn_X_Vector(Cell * _cell, int size);
 	vector<Cell> sortCellArrayBasedOn_Y(Cell * _cell, int size);
-	std::vector<int> convertCellIntoXArray(Cell *cell, int size);
+	std::vector<Cell> convertCellIntoArray(Cell * cell, int size);
 	vector<Cell> mergeSort(vector<Cell> _cell, int arrayLenght);
 	vector<Cell> sort(vector<Cell> array1, vector<Cell> array2, int half1, int half2);
 

@@ -7,34 +7,27 @@ thanks for learning at: https://www.geeksforgeeks.org/closest-pair-of-points/
 using namespace std;
 
 
-bool ClosestPoint::checkOnTable( int x, int y)
-{
-	bool result = false;
-	for (int i = 0; i < 16; i++) {
-
-		if (cells[i].x == x && cells[i].y == y)
-		{
-			result = true;
-			return result;
-		}
-	}
-	return result;
-}
 void ClosestPoint::runClosestPoint()
 {
 	char table[40][40];
+	/*
+	Cell pointsArray[] = { { -13, 0 }, { -10, -11 },{ -10, 9 },{ -4, -2 },{ -1, 8 },
+	{ 0, 6 },{ 0, -12 },{ 2, 12 },	{ 3, 11 },{ 5, 3 },{ 5, -7 }, 
+	{ 5, 11 },{ 6, 3 },{ 7, -10 }, 	{ 9, -5 },{ 11, -4 } };*/
 
-
-	//First of all get a list of points and add to the stack
-	cells = addPoints();
+	Cell pointsArray[] = { { -20, -20 },{ 12, 2 },{ -10, -6 },{ 5, 1 },{ 12, 10 },{ 3, 4 } };
 
 	//Then print the table
 	for (int i = 0; i < 40; i++)
 	{
 		for (int j = 0; j < 40; j++)
 		{
-			if (checkOnTable(i-20,j-20)) {
+			if (checkOnTable(pointsArray, i-20, j-20)) {
 				table[i][j] = 'O';
+			}
+			else if (i-20 == 0 || j-20 == 0)
+			{
+				table[i][j] = '.';
 			}
 			else
 			{
@@ -46,34 +39,9 @@ void ClosestPoint::runClosestPoint()
 		std::cout << "\n";
 	}
 
-	//vector<cell> cellsVector = util.convertCellpointerIntoVector(cells, 16);
-	
-	//Coonvert in a list
-	list<Cell> cellsList = util.convertCellpointerIntoList(cells, 16);
-	
-	//sort it based on X
-	cellsList.sort([](const Cell &f, const Cell &s) { return f.x < s.x; });
+	int size = sizeof(pointsArray) / sizeof(pointsArray[0]);
 
-	//vector<Cell> resposta = util.sortCellArrayBasedOn_X_Vector(cells, 16);
-	Cell *resposta;
-	resposta = util.sortCellArrayBasedOn_X(cells, 16);
-
-	cout << "\n So here we are again " << resposta[0].x;
-	testaStrip(cells);
-
-	cout << endl;
-
-	//Cell P[] = { { 2, 3 },{ 12, 30 },{ 40, 50 },{ 5, 1 },{ 12, 10 },{ 3, 4 } };
-
-	Cell P[] = { {-13, 0}, {-10, -11}, {-10, 9}, {-4, -2}, {-1, 8},
-		{0, 6}, {0, -12}, {2, 12},
-		{3, 11}, {5, 3}, {5, -7},
-		{5, 11}, {6, 3}, {7, -10},
-		{9, -5}, {11, -4} };
-
-	int size = sizeof(P) / sizeof(P[0]);
-	cout << "\nOlha que louco esse n tio " << size;
-	printf("\nThe smallest distance is %f ", closest(P, size));
+	printf("\nThe smallest distance is %f ", closest(pointsArray, size));
 
 	cout << "\nPoint A: ";
 	cout << "(" << pointA.x << "," << pointA.y << "), ";
@@ -81,21 +49,25 @@ void ClosestPoint::runClosestPoint()
 	cout << "(" << pointB.x << "," << pointB.y << "), ";
 
 	cout << endl;
-	//return 0;
-
-
-	//util.mergeSort(cellsVector, cellsVector.size());
 }
-void ClosestPoint::testaStrip(Cell strip[])
+
+bool ClosestPoint::checkOnTable(Cell points[], int x, int y)
 {
-	cout << "Recebeu como parametro " << strip[0].x;
+	bool result = false;
+	for (int i = 0; i < 16; i++) {
+
+		if (points[i].x == x && points[i].y == y)
+		{
+			result = true;
+			return result;
+		}
+	}
+	return result;
 }
 // A Brute Force method to return the smallest distance between two points
 // in P[] of size n
 float ClosestPoint::bruteForce(Cell P[], int n)
 {
-	//Cell p1, p2;
-	//float min = FLT_MAX;
 	for (int i = 0; i < n; ++i)
 	{
 		for (int j = i + 1; j < n; ++j)
@@ -119,7 +91,6 @@ float ClosestPoint::bruteForce(Cell P[], int n)
 }
 float ClosestPoint::stripClosest(Cell strip[], int size, float d)
 {
-	//float min = d;  // Initialize the minimum distance as d
 	minimum = d;
 
 	util.convertCellpointerIntoList(strip, size);
@@ -132,7 +103,6 @@ float ClosestPoint::stripClosest(Cell strip[], int size, float d)
 	{
 		for (int j = i + 1; j < size && (sortedStrip[j].y - sortedStrip[i].y) < minimum; ++j)
 		{
-			cout << "\nRole uma "  + i;
 			if (util.findDistanceBeetweenTwoPoints(sortedStrip[i], sortedStrip[j]) < minimum)
 			{
 				pointA = sortedStrip[i];
@@ -206,22 +176,5 @@ float ClosestPoint::closest(Cell P[], int n)
 	
 	// Use recursive function closestUtil() to find the smallest distance
 	return closestUtil(sortedP, n);
-}
-
-Cell* ClosestPoint::addPoints()
-{
-	cells = new Cell[16]
-		//I abstracted the floating points
-	{ Cell(13, 0.5), Cell(-10.5, -11.5),
-		Cell(-10, 9), Cell(-4.5, -2), Cell(-1, 8.5),
-		Cell(0.5, 6), Cell(0.5, -12), Cell(2, 12.5),
-		Cell(-12, 11), Cell(-8, 3), Cell(-5, -7),
-		Cell(5, 11.5), Cell(6.5, 3.2), Cell(7, -10),
-		Cell(9, -5), Cell(11.5, -4)
-	};
-	/*for (int i = 0; i < 16; i++) {
-	std::cout << "(" << cells[i].x << "," << cells[i].y << "), " ;
-	}*/
-	return cells;
 }
 

@@ -81,13 +81,13 @@ vector<Cell> Util::sortCellArrayBasedOn_Y(Cell * _cell, int size)
 	return result;
 }
 
-std::vector<int> Util::convertCellIntoXArray(Cell * cell, int size)
+std::vector<Cell> Util::convertCellIntoArray(Cell * cell, int size)
 {
-	std::vector<int> resultVector;
+	std::vector<Cell> resultVector;
 
 	for (int i = 0; i < size; i++)
 	{
-		resultVector.push_back(cell[i].x);
+		resultVector.push_back(cell[i]);
 	}
 
 	return resultVector;

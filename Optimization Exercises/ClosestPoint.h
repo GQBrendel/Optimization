@@ -19,8 +19,7 @@ public:
 
 	float closest(Cell P[], int n);
 
-	Cell* addPoints();
-	bool checkOnTable(int x, int y);
+	bool checkOnTable(Cell point[], int x, int y);
 	void runClosestPoint();
 
 	void testaStrip(Cell strip[]);
@@ -29,8 +28,8 @@ public:
 
 	float minimum = FLT_MAX;
 
-
-	Cell *cells;
+	//Cell *pointsArray;
+	//Cell *cells;
 	Util util;
 };
 
