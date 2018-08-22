@@ -9,13 +9,20 @@ using namespace std;
 
 void ClosestPoint::runClosestPoint()
 {
+	srand(time(NULL));
 	char table[40][40];
-	/*
-	Cell pointsArray[] = { { -13, 0 }, { -10, -11 },{ -10, 9 },{ -4, -2 },{ -1, 8 },
+
+	cout << "This program check on a table of 16 random points with the value beetween\n (-20,-20) , (20,20)"
+		<< " and find the closest point\n";
+	
+	/*Cell pointsArray[] = { { -13, 0 }, { -10, -11 },{ -10, 9 },{ -4, -2 },{ -1, 8 },
 	{ 0, 6 },{ 0, -12 },{ 2, 12 },	{ 3, 11 },{ 5, 3 },{ 5, -7 }, 
 	{ 5, 11 },{ 6, 3 },{ 7, -10 }, 	{ 9, -5 },{ 11, -4 } };*/
 
-	Cell pointsArray[] = { { -20, -20 },{ 12, 2 },{ -10, -6 },{ 5, 1 },{ 12, 10 },{ 3, 4 } };
+	//Fill the table with random numbers, I know this looks ugly
+	Cell pointsArray[] = { { rng(), rng() }, { rng(), rng() },{ rng(), rng() },{ rng(), rng() },{ rng(), rng() },
+	{ rng(), rng() },{ rng(), rng() },{ rng(), rng() },	{ rng(), rng() },{ rng(), rng() },{ rng(), rng() },
+	{ rng(), rng() },{ rng(), rng() },{ rng(), rng() }, { rng(), rng() },{ rng(), rng() } };
 
 	//Then print the table
 	for (int i = 0; i < 40; i++)
@@ -43,12 +50,36 @@ void ClosestPoint::runClosestPoint()
 
 	printf("\nThe smallest distance is %f ", closest(pointsArray, size));
 
-	cout << "\nPoint A: ";
+	cout << "\n\nPoint A: ";
 	cout << "(" << pointA.x << "," << pointA.y << "), ";
 	cout << "\nPoint B: ";
 	cout << "(" << pointB.x << "," << pointB.y << "), ";
 
 	cout << endl;
+
+	//Print it again with the reult
+	for (int i = 0; i < 40; i++)
+	{
+		for (int j = 0; j < 40; j++)
+		{
+			if ((i-20 == pointA.x && j-20 == pointA.y) || (i-20 == pointB.x && j-20 == pointB.y))
+			{
+				table[i][j] = 'X';
+			}
+			std::cout << table[i][j] << ' ';
+		}
+		std::cout << "\n";
+	}
+}
+
+int ClosestPoint::rng()
+{
+	//I choose a random distribution instead of a pseudo random to get more variation
+	std::mt19937 result;
+	result.seed(std::random_device()());
+	std::uniform_int_distribution<std::mt19937::result_type> dist(0, 40); // distribution in range [0, 40]
+
+	return (dist(result) - 20);
 }
 
 bool ClosestPoint::checkOnTable(Cell points[], int x, int y)
@@ -80,13 +111,13 @@ float ClosestPoint::bruteForce(Cell P[], int n)
 			}
 		}
 	}
+	/*
 	cout << "\nPoint A: ";
 	cout << "(" << pointA.x << "," << pointA.y << "), ";
-
-
 	cout << "\nPoint B: ";
 	cout << "(" << pointB.x << "," << pointB.y << "), ";
 	cout << "\n Min is " << minimum; cout << endl;
+	*/
 	return minimum;
 }
 float ClosestPoint::stripClosest(Cell strip[], int size, float d)
@@ -111,13 +142,13 @@ float ClosestPoint::stripClosest(Cell strip[], int size, float d)
 			}
 		}
 	}
+	/*
 	cout << "\nPoint A: ";
 	cout << "(" << pointA.x << "," << pointA.y << "), ";
-
-
 	cout << "\nPoint B: ";
 	cout << "(" << pointB.x << "," << pointB.y << "), ";
 	cout << "\n Min is " << minimum; cout << endl;
+	*/
 	return minimum;
 }
 // Needed to sort array of points according to X coordinate

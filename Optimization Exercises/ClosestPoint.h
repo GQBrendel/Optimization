@@ -2,6 +2,8 @@
 #include "cell.h"
 #include <iostream>
 #include "Util.h"
+#include <ctime>
+#include <random>
 
 class ClosestPoint
 {
@@ -22,14 +24,12 @@ public:
 	bool checkOnTable(Cell point[], int x, int y);
 	void runClosestPoint();
 
-	void testaStrip(Cell strip[]);
+	int rng();
 
 	Cell pointA, pointB;
 
 	float minimum = FLT_MAX;
 
-	//Cell *pointsArray;
-	//Cell *cells;
 	Util util;
 };
 
