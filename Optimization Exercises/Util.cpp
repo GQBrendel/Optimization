@@ -31,7 +31,24 @@ list<Cell> Util::convertCellpointerIntoList(Cell * _cell, int size)
 	}
 	return result;
 }
-vector<Cell> Util::sortCellArrayBasedOn_X(Cell * _cell, int size)
+Cell* Util::sortCellArrayBasedOn_X(Cell * _cell, int size)
+{
+	Cell *result;
+	result = new Cell[size];
+	std::list<Cell> listToSort;
+	for (int i = 0; i < size; i++)
+	{
+		listToSort.push_back(_cell[i]);
+	}
+	listToSort.sort([](const Cell &f, const Cell &s) { return f.x < s.x; });
+	for (int i = 0; i < size; i++)
+	{
+		result[i] = listToSort.front();
+		listToSort.pop_front();
+	}
+	return result;
+}
+vector<Cell> Util::sortCellArrayBasedOn_X_Vector(Cell * _cell, int size)
 {
 	vector<Cell> result;
 	std::list<Cell> listToSort;

@@ -16,7 +16,10 @@ public:
 
 	vector<Cell> convertCellpointerIntoVector(Cell * _cell, int size);
 	list<Cell> convertCellpointerIntoList(Cell * _cell, int size);
-	vector<Cell> sortCellArrayBasedOn_X(Cell * _cell, int size);
+
+	Cell * sortCellArrayBasedOn_X(Cell * _cell, int size);
+
+	vector<Cell> sortCellArrayBasedOn_X_Vector(Cell * _cell, int size);
 	vector<Cell> sortCellArrayBasedOn_Y(Cell * _cell, int size);
 	std::vector<int> convertCellIntoXArray(Cell *cell, int size);
 	vector<Cell> mergeSort(vector<Cell> _cell, int arrayLenght);
