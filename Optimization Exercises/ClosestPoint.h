@@ -27,7 +27,7 @@ public:
 
 	Cell pointA, pointB;
 
-	float minimo = FLT_MAX;
+	float minimum = FLT_MAX;
 
 
 	Cell *cells;

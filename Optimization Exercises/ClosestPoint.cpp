@@ -100,11 +100,11 @@ float ClosestPoint::bruteForce(Cell P[], int n)
 	{
 		for (int j = i + 1; j < n; ++j)
 		{
-			if (util.findDistanceBeetweenTwoPoints(P[i], P[j]) < minimo)
+			if (util.findDistanceBeetweenTwoPoints(P[i], P[j]) < minimum)
 			{
 				pointA = P[i];
 				pointB = P[j];
-				minimo = util.findDistanceBeetweenTwoPoints(P[i], P[j]);
+				minimum = util.findDistanceBeetweenTwoPoints(P[i], P[j]);
 			}
 		}
 	}
@@ -114,13 +114,13 @@ float ClosestPoint::bruteForce(Cell P[], int n)
 
 	cout << "\nPoint B: ";
 	cout << "(" << pointB.x << "," << pointB.y << "), ";
-	cout << "\n Min is " << minimo; cout << endl;
-	return minimo;
+	cout << "\n Min is " << minimum; cout << endl;
+	return minimum;
 }
 float ClosestPoint::stripClosest(Cell strip[], int size, float d)
 {
 	//float min = d;  // Initialize the minimum distance as d
-	minimo = d;
+	minimum = d;
 
 	util.convertCellpointerIntoList(strip, size);
 	vector<Cell> sortedStrip  = util.sortCellArrayBasedOn_Y(strip,size);
@@ -130,14 +130,14 @@ float ClosestPoint::stripClosest(Cell strip[], int size, float d)
 	// This is a proven fact that this loop runs at most 6 times
 	for (int i = 0; i < size; ++i)
 	{
-		for (int j = i + 1; j < size && (sortedStrip[j].y - sortedStrip[i].y) < minimo; ++j)
+		for (int j = i + 1; j < size && (sortedStrip[j].y - sortedStrip[i].y) < minimum; ++j)
 		{
 			cout << "\nRole uma "  + i;
-			if (util.findDistanceBeetweenTwoPoints(sortedStrip[i], sortedStrip[j]) < minimo)
+			if (util.findDistanceBeetweenTwoPoints(sortedStrip[i], sortedStrip[j]) < minimum)
 			{
 				pointA = sortedStrip[i];
 				pointB = sortedStrip[j];
-				minimo = util.findDistanceBeetweenTwoPoints(sortedStrip[i], sortedStrip[j]);
+				minimum = util.findDistanceBeetweenTwoPoints(sortedStrip[i], sortedStrip[j]);
 			}
 		}
 	}
@@ -147,8 +147,8 @@ float ClosestPoint::stripClosest(Cell strip[], int size, float d)
 
 	cout << "\nPoint B: ";
 	cout << "(" << pointB.x << "," << pointB.y << "), ";
-	cout << "\n Min is " << minimo; cout << endl;
-	return minimo;
+	cout << "\n Min is " << minimum; cout << endl;
+	return minimum;
 }
 // Needed to sort array of points according to X coordinate
 int ClosestPoint::compareX(const void* a, const void* b)
